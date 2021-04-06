@@ -17,13 +17,13 @@ const router = new Router({
             path: '/',
             name: 'Home',
             component: () => import('@/layouts/system/Index.vue'),
-            // children: [
-            //     {
-            //         path: '/loan/repayment',
-            //         name: 'LoanRepayment',
-            //         component: () => import('@/views/connection/Index.vue')
-            //     },
-            // ],
+            children: [
+                {
+                    path: '/loan/repayment',
+                    name: 'LoanRepayment',
+                    component: () => import('@/views/LoanRepayment/Index.vue')
+                },
+            ],
         },
     ]
 })

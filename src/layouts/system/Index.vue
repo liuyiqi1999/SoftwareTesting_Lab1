@@ -7,10 +7,12 @@
         <el-page-header @back="goBack" content="lab1 - 基础模块开发">
         </el-page-header>
       </el-header>
-      <SideBar></SideBar>
-      <el-main>
-        <router-view />
-      </el-main>
+      <el-container>
+        <SideBar></SideBar>
+        <el-main>
+          <router-view />
+        </el-main>
+      </el-container>
     </el-container>
   </v-app>
 </template>
