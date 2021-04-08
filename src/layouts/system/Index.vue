@@ -1,32 +1,24 @@
 <template>
-  <v-app
-      class="app"
-  >
+  <el-container>
+    <el-header>
+      <SystemHeader/>
+    </el-header>
     <el-container>
-      <el-header>
-        <el-page-header @back="goBack" content="lab1 - 基础模块开发">
-        </el-page-header>
-      </el-header>
-      <el-container>
-        <SideBar></SideBar>
-        <el-main>
-          <router-view />
-        </el-main>
-      </el-container>
+      <SideBar></SideBar>
+      <el-main>
+        <router-view/>
+      </el-main>
     </el-container>
-  </v-app>
+  </el-container>
 </template>
 
 <script>
 import SideBar from "@/components/SideBar";
+import SystemHeader from "@/components/SystemHeader";
+
 export default {
-name: "Index",
-  components: {SideBar},
-  methods: {
-    goBack() {
-      this.$router.go(-1)
-    }
-  }
+  name: "Index",
+  components: {SystemHeader, SideBar},
 }
 </script>
 

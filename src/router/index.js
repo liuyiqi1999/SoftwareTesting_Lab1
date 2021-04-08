@@ -7,14 +7,22 @@ const router = new Router({
     mode: 'hash',
     base: process.env.BASE_URL,
     scrollBehavior: (to, from, savedPosition) => {
-        if (to.hash) return { selector: to.hash }
+        if (to.hash) return {selector: to.hash}
         if (savedPosition) return savedPosition
 
-        return { x: 0, y: 0 }
+        return {x: 0, y: 0}
     },
     routes: [
         {
-            path: '/',
+          path: '/', redirect: '/home'
+        },
+        {
+            path: '/login',
+            name: 'Login',
+            component: () => import('@/views/login/Index.vue'),
+        },
+        {
+            path: '/home',
             name: 'Home',
             component: () => import('@/layouts/system/Index.vue'),
             children: [
