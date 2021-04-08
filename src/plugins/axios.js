@@ -13,12 +13,10 @@ _axios.interceptors.request.use(
         // User authorization
         if (localStorage.getItem('token')) {
             const token = localStorage.getItem('token')
-            //config.headers.common.Authorization = `Bearer ${token}`
             config.headers.common = {
                 "Accept": "application/json, text/plain, */*",
                 "login-token": token
             }
-            console.log(config.headers)
         }
         return config
     },

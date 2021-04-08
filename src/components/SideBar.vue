@@ -1,5 +1,5 @@
 <template>
-  <el-aside>
+  <el-aside width="250px">
     <el-menu
         class="el-menu-vertical-demo"
     >
