@@ -3,7 +3,7 @@
     <el-col :span="16">
       <el-row>
         <el-col :span="8">
-          身份证号：
+          <p style="line-height: 40px; margin: 0">身份证号：</p>
         </el-col>
         <el-col :span="16">
           <el-input
@@ -16,7 +16,7 @@
       </el-row>
     </el-col>
     <el-col :span="8">
-      <el-button type="primary" icon="el-icon-search">查询</el-button>
+      <el-button type="primary" icon="el-icon-search" @click="searchUser">查询</el-button>
     </el-col>
   </el-row>
 </template>
@@ -27,6 +27,10 @@ export default {
   data() {
     return {
       userIdentification: "",
+    }
+  },
+  methods: {
+    searchUser(){
 
     }
   }
