@@ -4,7 +4,7 @@ import router from 'vue-router'
 // axios默认配置
 axios.defaults.timeout = 10000
 //axios.defaults.baseURL = 'http://192.168.56.1:8085/'
-axios.defaults.baseURL = 'http://10.176.122.174:8012/'
+axios.defaults.baseURL = 'http://localhost:8088/'
 
 const _axios = axios.create()
 

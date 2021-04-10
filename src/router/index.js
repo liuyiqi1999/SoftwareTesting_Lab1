@@ -14,15 +14,12 @@ const router = new Router({
     },
     routes: [
         {
-          path: '/', redirect: '/login'
-        },
-        {
             path: '/login',
             name: 'Login',
             component: () => import('@/views/login/Index.vue'),
         },
         {
-            path: '/home',
+            path: '/',
             name: 'Home',
             component: () => import('@/layouts/system/Index.vue'),
             children: [
@@ -31,6 +28,11 @@ const router = new Router({
                     name: 'LoanRepayment',
                     component: () => import('@/views/LoanRepayment/Index.vue')
                 },
+                {
+                    path: '/financing/product',
+                    name: 'FinancingProduct',
+                    component: () => import('@/views/FinancingProduct/Index.vue')
+                }
             ],
         },
     ]

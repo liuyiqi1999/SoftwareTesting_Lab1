@@ -2,62 +2,42 @@
   <el-row>
     <el-col :span="16">
       <el-row>
-        <el-col :span="8">
-          <p style="line-height: 40px; margin: 0">客户号：</p>
-        </el-col>
-        <el-col :span="16">
-          <el-input
-              placeholder="请输入客户号"
-              prefix-icon="el-icon-info"
-              v-model="userIdentification"
-          >
-          </el-input>
-        </el-col>
+        <el-input
+            placeholder="请输入客户号"
+            prefix-icon="el-icon-info"
+            v-model="userIdentification"
+        >
+          <template slot="prepend">客户号</template>
+        </el-input>
       </el-row>
     </el-col>
-    <el-col :span="8">
-      <el-button type="primary" icon="el-icon-search" @click="searchUser">查询</el-button>
+    <el-col :span="8" align="left">
+      <el-button type="primary" icon="el-icon-search" @click="searchUser" style="margin-left: 15px">查询</el-button>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import qs from "qs"
 export default {
   name: "SearchUser",
   data() {
     return {
       userIdentification: "",
-      customers: [],
+      customer: {},
     }
   },
   methods: {
-    searchUser(){
-      console.log(this.userIdentification)
+    searchUser() {
       let that = this
-      let data = {
-        pageSize: 10,
-        pageNum: 1,
-        params: '{ "orderBy": "order by b.updateTime desc" }'
-      }
-      that.axios.get('/loan?'+ qs.stringify(data,{arrayFormat: 'indices'}))
-        .then(response => {
-          let list = response.data.list
-          for(let i=0;i<list.length;i++){
-            if(that.userIdentification!==""){
-              if (list[i].customerCode === that.userIdentification)
-                that.customers.push(list[i])
-            }else{
-              that.customers = [...list]
-              break
-            }
-          }
-          that.$emit('search-user-event', that.customers)
-        })
-        .catch(error => {
-          console.log(error)
-          that.$message("查询失败")
-        })
+      that.axios.get('/loan/user?idnumber=' + that.userIdentification)
+          .then(response => {
+            that.customer = response.data
+            that.$emit('search-user-event', that.customer)
+          })
+          .catch(error => {
+            console.log(error)
+            that.$message("查询失败")
+          })
     }
   }
 }
