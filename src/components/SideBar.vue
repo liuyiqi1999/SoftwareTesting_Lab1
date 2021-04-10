@@ -9,7 +9,7 @@
           <span>贷款业务</span>
         </template>
         <el-menu-item index="1-1" @click="$router.push({name: 'LoanRepayment'}).catch(err => err)">贷款账户管理</el-menu-item>
-        <el-menu-item index="1-2" @click="$router.push({name: 'DailyRepayment'}).catch(err => err)">日终处理</el-menu-item>
+        <el-menu-item index="1-2" @click="autoRepay">日终处理</el-menu-item>
       </el-submenu>
       <el-menu-item index="2" @click="$router.push({name:'TradingList'})">账户流水</el-menu-item>
       <el-menu-item index="3" @click="$router.push({name: 'FinancingProduct'}).catch(err => err)">理财产品购买及查询</el-menu-item>
@@ -19,7 +19,19 @@
 
 <script>
 export default {
-  name: "SideBar"
+  name: "SideBar",
+  methods:{
+    autoRepay(){
+      let that = this
+      this.axios.get('/autoRepay')
+        .then(() => {
+          that.$message('日终处理成功')
+        })
+      .catch(error => {
+        console.log(error)
+      })
+    }
+  }
 }
 </script>
 

@@ -29,7 +29,7 @@ export default {
   methods: {
     searchUser() {
       let that = this
-      that.axios.get('/loan/user?idnumber=' + that.userIdentification)
+      that.axios.get('/loan/customerInfo?idNumber=' + that.userIdentification)
           .then(response => {
             that.customer = response.data
             that.$emit('search-user-event', that.customer)
