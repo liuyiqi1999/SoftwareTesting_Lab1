@@ -4,12 +4,13 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const router = new Router({
-    mode: 'hash',
-    base: process.env.BASE_URL,
-    scrollBehavior: (to, from, savedPosition) => {
-        if (to.hash) return {selector: to.hash}
-        if (savedPosition) return savedPosition
-
+	mode: 'hash',
+	base: process.env.BASE_URL,
+	scrollBehavior: (to, from, savedPosition) => {
+		if (to.hash) return {
+			selector: to.hash
+		}
+		if (savedPosition) return savedPosition
         return {x: 0, y: 0}
     },
     routes: [
@@ -32,7 +33,12 @@ const router = new Router({
                     path: '/financing/product',
                     name: 'FinancingProduct',
                     component: () => import('@/views/FinancingProduct/Index.vue')
-                }
+                },
+				{
+					path: '/trading',
+					name: 'TradingList',
+					component: () => import('@/views/TradingQuery/Index.vue')
+				},
             ],
         },
     ]

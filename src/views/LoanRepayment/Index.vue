@@ -54,7 +54,6 @@
 
 <script>
 import SearchUser from "@/components/SearchUser";
-
 export default {
   name: "Index",
   components: {SearchUser},
