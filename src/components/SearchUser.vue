@@ -3,11 +3,11 @@
     <el-col :span="16">
       <el-row>
         <el-input
-            placeholder="请输入客户号"
+            placeholder="请输入客户证件号"
             prefix-icon="el-icon-info"
             v-model="userIdentification"
         >
-          <template slot="prepend">客户号</template>
+          <template slot="prepend">证件号</template>
         </el-input>
       </el-row>
     </el-col>
